@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservices-createtask
+spec:
+  selector:
+    app: microservices-createtask
+  ports:
+    - name: microservices-createtask
+      port: 8000
+      targetPort: 8001
+  type: ClusterIP

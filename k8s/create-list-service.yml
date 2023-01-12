@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservices-createlist
+spec:
+  selector:
+    app: microservices-createlist
+  ports:
+    - name: microservices-createlist
+      port: 8000
+      targetPort: 8005
+  type: ClusterIP
