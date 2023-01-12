@@ -1,0 +1,87 @@
+version: "3"
+services:
+  getalltasks:
+    build:
+      dockerfile: Dockerfile
+      context: ./getalltasks
+    container_name: getalltasks
+    ports:
+      - "8006:8006"
+    restart: always
+    volumes:
+      - .:/app
+      - /app/getalltasks/node_modules
+
+  createtask:
+    build:
+      dockerfile: Dockerfile
+      context: ./createtask
+    container_name: createtask
+    ports:
+      - "8001:8001"
+    restart: always
+    volumes:
+      - .:/app
+      - /app/createtask/node_modules
+
+  deletetask:
+    build:
+      dockerfile: Dockerfile
+      context: ./deletetask
+    container_name: deletetask
+    ports:
+      - "8002:8002"
+    restart: always
+    volumes:
+      - .:/app/
+      - /app/deletetask/node_modules
+
+  updatetask:
+    build:
+      dockerfile: Dockerfile
+      context: ./updatetask
+    container_name: updatetask
+    ports:
+      - "8003:8003"
+    restart: always
+    volumes:
+      - .:/app/
+      - /app/updatetask/node_modules
+
+  getalllists:
+    build:
+      dockerfile: Dockerfile
+      context: ./getalllists
+    container_name: getalllists
+    ports:
+      - "8004:8004"
+    restart: always
+    volumes:
+      - .:/app/
+      - /app/getalllists/node_modules
+
+  createlist:
+    build:
+      dockerfile: Dockerfile
+      context: ./createlist
+    container_name: createlist
+    ports:
+      - "8005:8005"
+    restart: always
+    volumes:
+      - .:/app/
+      - /app/createlist/node_modules
+
+  nginx-proxy:
+    build:
+      dockerfile: Dockerfile
+      context: ./proxy
+    depends_on:
+      - getalltasks
+      - createtask
+      - deletetask
+      - updatetask
+      - getalllists
+      - createlist
+    ports:
+      - "80:80"
