@@ -25,7 +25,7 @@ export const listsAPI = createApi({
 
     deleteList: build.mutation({
       query: (list) => ({
-        url: `https://62c6bbd02b03e73a58d57240.mockapi.io/lists/${list.id}`,
+        url: `http://127.0.0.1:8007/${list.id}`,
         method: "DELETE",
         body: list,
       }),
