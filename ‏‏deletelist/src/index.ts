@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
 import fetch from "node-fetch";
-const PORT = "8007";
+const PORT = "9001";
 function checkResponseStatus(res: any) {
     if (res.ok) {
         return res;

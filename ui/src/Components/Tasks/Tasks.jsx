@@ -6,12 +6,19 @@ import Task from "../Task/Task";
 import Input from "../Input/Input";
 import { listsAPI } from "../../service/ListsService";
 import { tasksAPI } from "../../service/TasksService";
+import { colorAPI } from "../../service/colorService";
 
 function Tasks() {
   const [newTask, setNewTask] = useState({ value: "" });
   const location = useLocation();
   const currentPage = location.pathname.split("/").slice(-1).join();
   const { data: lists } = listsAPI.useFetchAllListsQuery("");
+  const {
+    data: appColor,
+    isLoading: isColorLoading,
+    isError: colorError,
+  } = colorAPI.useGetColorQuery("");
+
   const { data: tasks, isLoading: isTasksLoading } =
     tasksAPI.useFetchAllTasksQuery("");
   const [createTask] = tasksAPI.useCreateTaskMutation();
@@ -30,7 +37,7 @@ function Tasks() {
 
   return (
     <div className="tasks">
-      <h1>{pageTitle}</h1>
+      <h1 style={{ color: appColor ? appColor.color : "red" }}>{pageTitle}</h1>
 
       <Input
         value={newTask.value}

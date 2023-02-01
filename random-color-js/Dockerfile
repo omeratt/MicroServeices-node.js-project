@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /app/deletetask
+WORKDIR /app/randomColorJs
 
 COPY package.json .
 
@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 9001
+EXPOSE 9000
 
 CMD ["npm", "start"]
