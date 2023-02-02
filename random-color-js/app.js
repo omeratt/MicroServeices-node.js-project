@@ -1,5 +1,7 @@
-const express = require("express");
-const cors = require("cors");
+// const express = require("express");
+// const cors = require("cors");
+import express from "express";
+import cors from "cors";
 const app = express();
 
 app.use(cors());
@@ -9,9 +11,7 @@ app.get("/", (req, res) => {
     Math.floor(Math.random() * 16777215)
       .toString(16)
       .padStart(6, "0");
-  res.send({ color });
+  res.status(200).send({ color });
 });
 
-app.listen(9000, () => {
-  console.log("Server is running on http://localhost:9000");
-});
+export default app;
