@@ -72,6 +72,52 @@ services:
       - .:/app/
       - /app/createlist/node_modules
 
+  randomcolorjs:
+    build:
+      dockerfile: Dockerfile
+      context: ./random-color-js
+    container_name: randomcolorjs
+    ports:
+      - "9000:9000"
+    restart: always
+    volumes:
+      - .:/app/
+      - /app/random-color-js/node_modules
+
+  deletelistpy:
+    build:
+      dockerfile: Dockerfile
+      context: ./deletelistpy
+    container_name: deletelistpy
+    ports:
+      - "8007:8007"
+    restart: always
+    volumes:
+      - .:/app/
+
+  randomcolorpy:
+    build:
+      dockerfile: Dockerfile
+      context: ./randomcolorpy
+    container_name: randomcolorpy
+    ports:
+      - "8008:8008"
+    restart: always
+    volumes:
+      - .:/app/
+
+  deletelist:
+  build:
+    dockerfile: Dockerfile
+    context: ./deletelist
+  container_name: deletelist
+  ports:
+    - "9001:9001"
+  restart: always
+  volumes:
+    - .:/app/
+    - /app/deletelist/node_modules
+
   nginx-proxy:
     build:
       dockerfile: Dockerfile
@@ -83,5 +129,9 @@ services:
       - updatetask
       - getalllists
       - createlist
+      - deletelist
+      - randomcolorpy
+      - randomcolorjs
+      - deletelistpy
     ports:
       - "80:80"

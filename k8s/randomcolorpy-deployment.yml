@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservices-randomcolorpy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservices-randomcolorpy
+  template:
+    metadata:
+      labels:
+        app: microservices-randomcolorpy
+    spec:
+      containers:
+        - name: microservices-randomcolorpy
+          image: ashtamkereliran/randomcolorpy:latest
+          ports:
+            - containerPort: 8008

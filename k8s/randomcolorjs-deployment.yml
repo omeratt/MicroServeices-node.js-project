@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservices-randomcolorjs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservices-randomcolorjs
+  template:
+    metadata:
+      labels:
+        app: microservices-randomcolorjs
+    spec:
+      containers:
+        - name: microservices-randomcolorjs
+          image: ashtamkereliran/randomcolorjs:latest
+          ports:
+            - containerPort: 9000

@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: microservices-createlist
-          image: omeratt/microserveices-createlist:latest
+          image: ashtamkereliran/microserveices-nodejs-project-createlist:latest
           ports:
             - containerPort: 8005

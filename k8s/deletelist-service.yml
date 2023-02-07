@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservices-deletelist
+spec:
+  selector:
+    app: microservices-deletelist
+  ports:
+    - name: microservices-deletelist
+      port: 8000
+      targetPort: 9001
+  type: ClusterIP

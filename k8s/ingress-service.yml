@@ -59,3 +59,31 @@ spec:
                 name: microservices-createlist
                 port:
                   number: 8005
+          - path: /deletelistpy/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: microservices-deletelistpy
+                port:
+                  number: 8007
+          - path: /randomcolorpy/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: microservices-randomcolorpy
+                port:
+                  number: 8008
+          - path: /randomcolorjs/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: microservices-randomcolorjs
+                port:
+                  number: 9000
+          - path: /deletelist/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: microservices-deletelist
+                port:
+                  number: 9001
