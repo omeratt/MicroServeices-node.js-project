@@ -18,6 +18,11 @@ function Tasks() {
     isLoading: isColorLoading,
     isError: colorError,
   } = colorAPI.useGetColorQuery("");
+  const {
+    data: appColorBackup,
+    isLoading: isColorColorBackupLoading,
+    isError: colorBackupError,
+  } = colorAPI.useGetColorBackupQuery("");
 
   const { data: tasks, isLoading: isTasksLoading } =
     tasksAPI.useFetchAllTasksQuery("");
@@ -34,10 +39,19 @@ function Tasks() {
     await createTask(newTask);
     setNewTask({ value: "" });
   };
-
   return (
     <div className="tasks">
-      <h1 style={{ color: appColor ? appColor.color : "red" }}>{pageTitle}</h1>
+      <h1
+        style={{
+          color: appColor
+            ? appColor.color
+            : appColorBackup?.color
+            ? appColorBackup.color
+            : "red",
+        }}
+      >
+        {pageTitle}
+      </h1>
 
       <Input
         value={newTask.value}

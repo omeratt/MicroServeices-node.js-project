@@ -9,6 +9,14 @@ export const colorAPI = createApi({
   endpoints: (build) => ({
     getColor: build.query({
       query: (list) => ({
+        url: "http://127.0.0.1/randomcolorpy/",
+        // url: "http://127.0.0.1/randomcolorjs/", //COPY
+        method: "GET",
+      }),
+      invalidatesTags: ["appColor"],
+    }),
+    getColorBackup: build.query({
+      query: (list) => ({
         // url: "http://127.0.0.1/randomcolorpy/",
         url: "http://127.0.0.1/randomcolorjs/", //COPY
         method: "GET",

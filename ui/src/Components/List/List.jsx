@@ -8,6 +8,7 @@ function List({ list, closeBurger }) {
   const { data: tasks } = tasksAPI.useFetchAllTasksQuery("");
   const [deleteTask] = tasksAPI.useDeleteTaskMutation("");
   const [deleteList] = listsAPI.useDeleteListMutation("");
+  const [deleteListBackup] = listsAPI.useDeleteListBackupMutation("");
   const navigate = useNavigate();
 
   const handlerDeleteList = (e) => {
@@ -17,7 +18,10 @@ function List({ list, closeBurger }) {
     tasks.forEach(
       (task) => task.listId === list.id && setTimeout(deleteTask(task), 1000)
     );
-    deleteList(list);
+
+    deleteList(list).catch(() => {
+      deleteListBackup(list);
+    });
   };
 
   return (
